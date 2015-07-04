@@ -118,3 +118,9 @@ Router.route '/history/private',
 
 	waitOn: ->
 		return [ Meteor.subscribe('privateHistory') ]
+
+Router.route '/organization/create',
+	name: 'createOrganization'
+
+	action: ->
+		this.render 'createOrganization'
