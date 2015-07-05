@@ -1,0 +1,7 @@
+<template name="orgItem">
+	<li class="link-room-{{rid}} {{active}} {{#if unread}}has-unread{{/if}} {{#if alert}}has-alert{{/if}}">
+		<a href="#" class="switchOrg" id="{{_id}}">
+			<span class='name'>{{name}}</span> {{#if currentOrg}} (Active) {{/if}}
+		</a>
+	</li>
+</template>
