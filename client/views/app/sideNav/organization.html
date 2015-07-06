@@ -4,13 +4,6 @@
 		<i class="a-plus"></i>
 	</h3>
 	<ul>
-		{{#unless isDefaultGroup}}
-		<li>
-			<a href="#" class="switchToDefault" id="DEFAULT">
-				<span class='name'>Go Back to Global Chat</span>
-			</a>
-		</li>
-		{{/unless}}
 		{{#each organizations}}
 			{{> orgItem }}
 		{{else}}

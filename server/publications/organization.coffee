@@ -4,4 +4,4 @@ Meteor.publish 'organizations', (rid) ->
 
 	userId = this.userId
 
-	Organization.find owner: userId
+	Organization.find()

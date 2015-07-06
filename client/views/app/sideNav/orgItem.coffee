@@ -2,7 +2,7 @@ Template.orgItem.events
 	'click .switchOrg': (e, instance) ->
 		Meteor.call 'switchOrganization', e.target.id, (error, result) ->
 			if result
-				# Router.go 'index'
+				Router.go 'index'
 				location.reload()
 
 	'click .more-channels': ->
