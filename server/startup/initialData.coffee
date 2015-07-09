@@ -1,8 +1,7 @@
 Meteor.startup ->
 	Meteor.defer ->
 
-
-		if not ChatRoom.findOne('name': 'general')?
+		if this.userId and not ChatRoom.findOne('name': 'general')?
 			ChatRoom.insert
 				_id: 'GENERAL'
 				usernames: []
@@ -16,13 +15,13 @@ Meteor.startup ->
 		# 	console.log 'Inserting user admin'.red
 		# 	console.log 'email: admin@admin.com | password: admin'.red
 
-		# 	id = Meteor.users.insert
-		# 		createdAt: new Date
-		# 		emails: [
-		# 			address: 'admin@admin.com'
-		# 			verified: true
-		# 		],
-		# 		name: 'Admin'
-		# 		avatarOrigin: 'none'
-
-		# 	Accounts.setPassword id, 'admin'
+			# id = Meteor.users.insert
+			# 	createdAt: new Date
+			# 	emails: [
+			# 		address: 'admin@admin.com'
+			# 		verified: true
+			# 	],
+			# 	name: 'Admin'
+			# 	avatarOrigin: 'none'
+			#
+			# Accounts.setPassword id, 'admin'

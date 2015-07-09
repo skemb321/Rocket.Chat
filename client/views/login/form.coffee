@@ -26,6 +26,9 @@ Template.loginForm.helpers
 	showBackToLoginLink: ->
 		return 'hidden' unless Template.instance().state.get() in ['register', 'forgot-password', 'email-verification']
 
+	organizations: ->
+		return Organization.find()
+
 	btnLoginSave: ->
 		switch Template.instance().state.get()
 			when 'register'
