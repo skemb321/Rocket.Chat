@@ -1,5 +1,4 @@
 # Partitioned Rocket Chat (with adminitration)
-===
 RocketChat in groups!
 
 # Initial Data
