@@ -1,0 +1,25 @@
+<template name="adminForm">
+	<form id="create-group-form" method='/'>
+		<header>
+			<h2>Create groups</h2>
+		</header>
+		<div class="fields">
+			<div class='input-text active {{showName}}'>
+				<input type="text" name="name" id="org-name" placeholder="group name" dir="auto"/>
+			</div>
+		</div>
+		<div class="submit">
+			<button data-loading-text="{{_ "Please_wait"}}..." class='button primary create-group'><span>Create</span></button>
+		</div>
+    <hr/>
+    <h2>Groups:</h2>
+    <ul>
+      {{#each organizations}}
+      <li><span class='name'>{{name}}</span></li>
+      {{else}}
+      <li><span>None</span></li>
+      {{/each}}
+    </ul>
+	</form>
+
+</template>
