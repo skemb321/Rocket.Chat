@@ -22,7 +22,6 @@ Group 2: Cavaliers
 * #stars
 * #coaches
 
-___
 # Documentation/FAQ/HOWTO:
 
 This version of RocketChat uses mizzao:meteor-partitioner package that will enable you to partiotioned your chat to groups.
