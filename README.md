@@ -58,6 +58,6 @@ Apart from the initial data above, admin can add new groups to the app by going 
 ### Summary:
    * I hope Rocket.Chat code will be re-written in javascript not in coffeescript so more users can extend it.
    * Mizzao should really update his package re my change to it.
-   * I hope Rocket.Chat will have more feature to come like sending a voice file would be very fun.
+   * I hope Rocket.Chat will have more feature to come like sending a voice file.
 
 
