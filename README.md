@@ -27,7 +27,7 @@ Group 2: Cavaliers
 This version of RocketChat uses mizzao:meteor-partitioner package that will enable you to partiotioned your chat to groups.
 
 ### How to add a group:
-    Apart from the initial data above, admin can add new groups to the app by going to /admin (i.e. localhost:3000/admin). From there, you can also view the existing groups.
+Apart from the initial data above, admin can add new groups to the app by going to /admin (i.e. localhost:3000/admin). From there, you can also view the existing groups.
    
 ### I didn't see meteor-partitioner installed, why?:
   This app uses another version of meteor-partioner available @ atmospherejs.com with name `skemb321:partitioner-fork`. Basically, `skemb321:partitioner-fork`, is just a fork of `mizzao:meteor-partitioner` package but with some changes in it's `Helpers` global namespace. To see the changes https://github.com/skemb321/meteor-partitioner
