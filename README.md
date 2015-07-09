@@ -1,165 +1,65 @@
-![Rocket.Chat logo](https://rocket.chat/images/logo/logo-dark.svg?v2)
+# Partitioned Rocket Chat (with adminitration)
+===
+RocketChat in groups!
 
-The Complete Open Source Chat Solution
+# Initial Data
+#### Groups
+Group 1: Warriors
+Group 2: Cavaliers
 
-## Demo
+#### Group 1 Users (username/password)
+* stephencurry@somewhere.com/123456
+* klaythomspons@somewhere.com/123456
 
-Checkout the latest version at [https://rocket.chat](https://rocket.chat)
+#### Group 2 Users (username/password)
+* lebronjames@somewhere.com/123456
+* kyrieirving@somewhere.com/123456
 
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=49QX7TYCVZK8L)
+#### Group 1 Channels
+* #athletes
+* #gameplan
 
-## About
+#### Group 2 Channels
+* #stars
+* #coaches
 
-[![Build Status](https://img.shields.io/travis/RocketChat/Rocket.Chat/master.svg)](https://travis-ci.org/RocketChat/Rocket.Chat) 
-[![Coverage Status](https://coveralls.io/repos/RocketChat/Rocket.Chat/badge.svg)](https://coveralls.io/r/RocketChat/Rocket.Chat) 
-[![Code Climate](https://codeclimate.com/github/RocketChat/Rocket.Chat/badges/gpa.svg)](https://codeclimate.com/github/RocketChat/Rocket.Chat) 
-[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/RocketChat/Rocket.Chat/raw/master/LICENSE) 
+___
+# Documentation/FAQ/HOWTO:
 
-Rocket.Chat is a Web Chat Server, developed in JavaScript, using the [Meteor](https://www.meteor.com/install) fullstack framework.
+This version of RocketChat uses mizzao:meteor-partitioner package that will enable you to partiotioned your chat to groups.
 
-It is a great solution for communities and companies wanting to privately host their own chat service or for developers looking forward to build and evolve their own chat platforms.
+How to add a group:
+   Apart from the initial data above, admin can add new groups to the app by going to /admin (i.e. localhost:3000/admin). From there, you can also view the existing groups.
+   
+I didn't see meteor-partitioner installed, why?:
+  This app uses another version of meteor-partioner available @ atmospherejs.com with name `skemb321:partitioner-fork`. Basically, `skemb321:partitioner-fork`, is just a fork of `mizzao:meteor-partitioner` package but with some changes in it's `Helpers` global namespace. To see the changes https://github.com/skemb321/meteor-partitioner
+  
 
-### On the News
+What are the changes made to basecode of Rocket.Chat?
+   1. Add meteor package: `skemb321:partitioner-fork`
+   2. Use Partitioner.partitionCollection(meteor.collection, option) to partion our collections.
+   3. Added new route for admin to create groups (/admin)
+   4. Some scripts for initial data upon startup.
+   5. JS for creation of groups
+   To view the changes click [here](https://github.com/skemb321/Rocket.Chat/pull/3/files)
+  
+Running the app locally:
+   1. Clone this repo
+   2. cd Rocket.Chat
+   3. meteor
 
-##### [Hacker News](https://news.ycombinator.com/item?id=9624737)
-> Yes, we made it to the #1
+How do I update my version of Rocket.Chat?
+   1. When developing, always checkout a new branch
+   2. When official Rocket.Chat repo has some updates, fetch it using `git fetch official` then ALWAYS use `git rebase official/master`. This will make it easier to merge updates from the official repo to yours. Check git rebase in git manual for more info.
 
-##### [Product Hunt](http://www.producthunt.com/posts/rocket-chat)
-> Your own open source Slack-like chat
+What's not supported in this version:
+   1. Notifications - notifications dont appear
+   2. Unread messages count - they don't appear anymore
+   3. Private Messages Bug - Users can still PM users from other groups. :sad:
 
-##### [JavaScript Weekly](http://javascriptweekly.com/issues/234)
-> An open source Web based, channel based chat system (a la Slack) built using Meteor, the full stack JavaScript development platform.
-
-##### [wwwhatsnew.com](http://wwwhatsnew.com/2015/05/30/rocket-chat-para-los-programadores-que-quieran-ofrecer-un-chat-en-su-web/)
-> Para los programadores que quieran ofrecer un chat en su web
-
-##### [clasesdeperiodismo.com](http://www.clasesdeperiodismo.com/2015/05/30/un-chat-de-codigo-abierto-que-puedes-anadir-a-la-web/)
-> Un chat de código abierto que puedes añadir a la web
-
-## Features
-
-### Current
-
-- BYOS (bring your own server)
-- Multiple Rooms
-- Direct Messages
-- Private Groups
-- Public Channels
-- Desktop Notifications
-- Mentions
-- Avatars
-- Markdown
-- Emojis
-- Transcripts / History
-- I18n - [Internationalization with Lingohub](https://translate.lingohub.com/engelgabriel/rocket-dot-chat/dashboard)
-- Hubot Friendly - [Hubot Integration Project](https://github.com/RocketChat/hubot-rocketchat)
-- Media Embeds
-- Link Previews
-- LDAP Authentication - [LDAP Authentication on Rocket.Chat Wiki](https://github.com/RocketChat/Rocket.Chat/wiki/LDAP-Authentication)
-- WebRTC signalling (Alpha) [Issue #115 - HELP WANTED](https://github.com/RocketChat/Rocket.Chat/issues/115)
-
-### Roadmap for v1.0
-
-- File Sharing [Issue #24 - HELP WANTED](https://github.com/RocketChat/Rocket.Chat/issues/24)
-
-### Roadmap for v1.1
-
-- Off-the-Record (OTR) Messaging [Issue #36 - HELP WANTED](https://github.com/RocketChat/Rocket.Chat/issues/36)
-- Native Cross-Platform Desktop Application [Issue #37 - HELP WANTED](https://github.com/RocketChat/Rocket.Chat/issues/37)
-- Native Android Application [Issue #271 - HELP WANTED](https://github.com/RocketChat/Rocket.Chat/issues/271)
-- Native iOS Application [Issue #270 - HELP WANTED](https://github.com/RocketChat/Rocket.Chat/issues/270)
-- Full text search
-- REST-full APIs
-- Kerberos Authentication
-- XMPP Multi-user chat (MUC)
-
-### Issues
-
-[Github Issues](https://github.com/RocketChat/Rocket.Chat/issues) are used to track todos, bugs, feature requests, and more.
-
-### Integrations
-
-#### Hubot
-
-The docker image is ready.
-Everyone can start hacking the adapter code, or launch his/her own bot within a few minutes now.
-Please head over to the [Hubot Integration Project](https://github.com/RocketChat/hubot-rocketchat) for more information.
-
-#### Many, many, many more to come!
-
-We are developing the APIs based on the competition, so stay tunned and you will see a lot happening here.
-
-### Documentation
-
-Checkout [Github Wiki](https://github.com/RocketChat/Rocket.Chat/wiki) (coming soon)
-
-## Production Deployment
-
-### Docker
-
-Use the automated build at our [Official Docker Registry](https://registry.hub.docker.com/u/rocketchat/rocket.chat/)
-
-[![Rocket.Chat logo](https://d207aa93qlcgug.cloudfront.net/1.95.5.qa/img/nav/docker-logo-loggedout.png)](https://registry.hub.docker.com/u/rocketchat/rocket.chat/)
-
-```
-docker pull rocketchat/rocket.chat
-```
-
-### Heroku
-
-Host your own Rocket.Chat server for **FREE** with [One-Click Deploy](https://heroku.com/deploy?template=https://github.com/RocketChat/Rocket.Chat/tree/master)
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/RocketChat/Rocket.Chat/tree/master)
-
-## Development Installation
-
-Prerequisites:
-
-* [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* [Meteor](https://www.meteor.com/install)
-
-Now just clone and start the app:
-
-```sh
-git clone https://github.com/RocketChat/Rocket.Chat.git
-cd Rocket.Chat
-meteor
-```
-
-## Credits
-
-Thanks to [Diego Sampaio](https://github.com/sampaiodiego), [Gabriel Engel](https://github.com/engelgabriel), [Marcelo Schmidt](https://github.com/marceloschmidt), [Rafael Caferati](https://github.com/rcaferati) e [Rodrigo Nascimento](https://github.com/rodrigok)
-
-Emoji provided free by [Emoji One](http://emojione.com)
-
-Performance monitoring provided by [Kadira](https://kadira.io/)
-
-### Contributions
-
-#### We Need Your Help!
-
-A lot of work has already gone into Rocket.Chat, but we have much bigger plans for it!
-
-So if you'd like to be part of the project, please check out the [roadmap](https://github.com/RocketChat/Rocket.Chat/milestones) and [issues](https://github.com/RocketChat/Rocket.Chat/issues) to see if there's anything you can help with.
-
-### Translations
-
-We are experimenting [Lingohub](https://translate.lingohub.com/engelgabriel/rocket-dot-chat/dashboard).
-If you want to help, send an email to support at rocket.chat to be invited to the translation project.
-
-### Community
-
-Join the the conversation at [Twitter](http://twitter.com/RocketChatApp), [Facebook](https://www.facebook.com/RocketChatApp) or [Google Plus](https://plus.google.com/+RocketChatApp)
-
-### License
-
-Note that Rocket.Chat is distributed under the [MIT License](http://opensource.org/licenses/MIT).
-
-### Donate
-
-Rocket.Chat will be free forever, but you can help us speed-up the development!
-
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=49QX7TYCVZK8L)
+Summary:
+   * I hope Rocket.Chat code will be re-written in javascript not in coffeescript so more users can extend it.
+   * Mizzao should really update his package re my change to it.
+   * I hope Rocket.Chat will have more feature to come like sending a voice file would be very fun.
 
 
-:smiling_imp:
